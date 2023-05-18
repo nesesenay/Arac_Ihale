@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model TumAracBilgileriDTO
+
+<div class="container-fluid">
+    <div class="row text-center">
+        <h2 class="mx-auto mb-5 text-center">İhaledeki Araçların Listesi</h2>
+        <div class="col-12">
+            <table class="table table-striped table-light">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Marka</th>
+                        <th scope="col">Model</th>
+                        <th scope="col">Yıl</th>
+                        <th scope="col">KM</th>
+                        <th scope="col">Renk</th>
+                         <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Araclar)
+                    {
+                        var detay = Model.AracDetaylari.FirstOrDefault(d => d.AracID == item.AracID);
+
+                        var foto = Model.AracFotolari.FirstOrDefault(f => f.AracFotoID == detay.AracFotoID);
+
+                        if (detay != null && foto != null)
+                        {
+                            <tr>
+                                <td style="vertical-align: middle;">
+                                    <img src="@foto.AracFoto1" style="max-width: 100px; max-height: 100px;" />
+                                </td>
+                                <td style="vertical-align: middle;">@item.Marka</td>
+                                <td style="vertical-align: middle;">@item.Model</td>
+                                <td style="vertical-align: middle;">@detay.Yıl</td>
+                                <td style="vertical-align: middle;">@detay.KmBilgisi</td>
+                                <td style="vertical-align: middle;">@detay.Renk</td>
+                                <td style="vertical-align: middle;">
+                                    <a asp-action="IhaleIcerigi" asp-controller="AracIlanlari" asp-route-aracID="@item.AracID" class="btn btn-success">İhaleye Detay</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

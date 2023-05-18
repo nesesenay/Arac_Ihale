@@ -1,0 +1,129 @@
+﻿@model OnaylanacakIhaleFiyatDTO
+
+<div class="container mx-5">
+
+    @using (Html.BeginForm("IhaleBilgisi", "AracIlanlari", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="card shadow mt-5" style="margin-top:20%">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">İhaleye Katıl</h6>
+            </div>
+
+
+            <div class="card-body row">
+
+                <div class="col-md-6">
+                    <div class="d-flex jalign-items-center pt-5 pl-4">
+                        <span class="mr-4 font-weight-bold text-primary">İhalenin Adı :</span>
+                        <span>@Model.AracIhale.IhaleAdi</span>
+                    </div>
+                </div>
+
+                 <div class="col-md-6">
+                    <div class="d-flex jalign-items-center pt-5 pl-4">
+                        <span class="mr-4 font-weight-bold text-primary">İhalenin Başlangıç Tarihi :</span>
+                        <span>@Model.AracIhale.IhaleBitisTarihi</span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="d-flex jalign-items-center pt-5 pl-4">
+                        <span class="mr-4 font-weight-bold text-primary">İhalenin Bitiş Tarihi :</span>
+                        <span>@Model.AracIhale.IhaleBitisTarihi</span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="d-flex jalign-items-center pt-5 pl-4">
+                        <span class="mr-4 font-weight-bold text-primary">İhalenin Başlangıç Saati :</span>
+                        <span>@Model.AracIhale.IhaleBaslangicSaati</span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="d-flex jalign-items-center pt-5 pl-4">
+                        <span class="mr-4 font-weight-bold text-primary">İhalenin Bitiş Saati :</span>
+                         <span>@Model.AracIhale.IhaleBitisSaati</span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="d-flex jalign-items-center pt-5 pl-4">
+                        <span class="mr-4 font-weight-bold text-primary">Kaydetme Tarihi :</span>
+                        <span>@Model.AracIhale.KaydetmeTarihi</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3">
+
+                <div class="card shadow mb-4 mx-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">İhale Araç Listesi</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Araç id</th>
+                                        <th>Kullanici id</th>
+                                        <th>Fiyat</th>
+                                        <th>Belirlenen Maksimum Fiyat</th>
+                                        <th>Arttırılacak Fiyat</th>
+                                        <th>Onay Durumu</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int i = 0; i < Model.IhaleFiyatlari.Count; i++)
+                                    {
+                                        var item = Model.IhaleFiyatlari[i];
+
+                                        <tr>
+                                            @Html.Hidden($"IhaleFiyatlari[{i}].AracID", item.AracID)
+                                            <td>@item.AracID</td>
+                                            @Html.Hidden($"IhaleFiyatlari[{i}].KullaniciID", item.KullaniciID)
+                                            @foreach (var kullanici in Model.Kullanici)
+                                            {
+                                                if (kullanici.KullaniciID == item.KullaniciID)
+                                                {
+                                                    <td>@kullanici.Ad @kullanici.Soyad</td>
+                                                }
+                                               
+                                            }    
+                                            @Html.Hidden($"IhaleFiyatlari[{i}].Fiyat", item.Fiyat)
+                                            <td>@item.Fiyat</td>
+                                            @Html.Hidden($"IhaleFiyatlari[{i}].BelirlenenMaksimumFiyat", item.BelirlenenMaksimumFiyat)
+                                            <td>@item.BelirlenenMaksimumFiyat</td>
+                                            @Html.Hidden($"IhaleFiyatlari[{i}].ArttırılacakFiyat", item.ArttırılacakFiyat)
+                                            <td>@item.ArttırılacakFiyat</td>
+                                            <td>
+                                                @Html.RadioButtonFor(m => Model.IhaleFiyatlari[i].OnaylandiMi, true, new { id = "radio_" + item.KurumsalIhaleFiyatID })
+                                                @Html.Label("radio_" + item.KurumsalIhaleFiyatID, "Onayla")
+                                            </td>
+                                            @Html.Hidden($"IhaleFiyatlari[{i}].KurumsalIhaleFiyatID", item.KurumsalIhaleFiyatID)
+                                            @Html.Hidden($"IhaleFiyatlari[{i}].ParaBirimID", item.ParaBirimID)
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="text-right pb-4 pt-4 d-flex">
+                    <input class="btn btn-success font-weight-bold me-4" style="width:200px" type="submit" name="name" value="Kaydet" />
+                    <a asp-action="IhaleDetay" asp-controller="AracIlanlari" class="btn btn-success">Geri Dön</a>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
+
+
