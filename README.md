@@ -17,10 +17,14 @@ Core MVC uygulaması iki ana kısımdan oluşmaktadır: Admin ve Kullanıcı.
 * İhalelere Katılım: Kullanıcılar, ihalelere katılabilir ve katılmak için bir ücret girer.
 * İhalelere Katılım: Kullanıcılar, ihalelere katılabilir ve katılmak için bir ücret girer.
 
+---
+
 ### Veri Tabanı ve Veri Erişimi
 - Veri tabanı işlemleri, Code First yaklaşımı kullanılarak gerçekleştirilir.
 - Web API, veritabanı işlemlerini yönetir ve ASP.NET Core MVC uygulaması bu API'yi kullanarak verilere erişir.
 - Repository Pattern kullanılarak veritabanı işlemleri düzenlenir.
+
+---
 
 ### Kimlik Doğrulama ve Yetkilendirme
 - Kimlik doğrulama için Cookie Authentication ve Claim bazlı yetkilendirme kullanılır.
