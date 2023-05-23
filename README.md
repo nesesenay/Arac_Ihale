@@ -1,4 +1,4 @@
-# İhale Yönetim Projesi - Admin 
+# İhale Yönetim Projesi - Admin ve Kullanıcı Arayüzleri
 Bu projem, iki ayrı bileşenden oluşmaktadır: Web API ve ASP.NET Core MVC uygulaması. Web API kısmında, ihale yönetimi için kullanılan veritabanı ve RESTful API oluşturulmuştur. Core MVC uygulamasında ise bu API'yi kullanmaktadır. Proje, admin panelindeki ihale işlemlerini gerçekleştirmek için kullanılmaktadır.
 
 ### Web API
