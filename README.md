@@ -10,12 +10,12 @@ Bu projem, iki ayrı bileşenden oluşmaktadır: Web API ve ASP.NET Core MVC uyg
 ### Core MVC Uygulaması
 Core MVC uygulaması iki ana kısımdan oluşmaktadır: Admin ve Kullanıcı.
 - Admin Tarafı İşlevleri
-* İhale Ekleme: Yeni bir ihale oluşturulabilir.
-* İhaleye Araç Ekleme: Var olan bir ihaleye araç eklenerek katılım sağlanabilir.
-* İhale Listeleme: Eklenen ihaleler bir tablo şeklinde listelenebilir.
-* İhale Onaylama: İhaleye katılan kullanıcılar içerisinden seçilen bir kullanıcı onaylanabilir ve sonrasında bu kullanıcı görüntülenebilir.
+  * İhale Ekleme: Yeni bir ihale oluşturulabilir.
+  * İhaleye Araç Ekleme: Var olan bir ihaleye araç eklenerek katılım sağlanabilir.
+  * İhale Listeleme: Eklenen ihaleler bir tablo şeklinde listelenebilir.
+  * İhale Onaylama: İhaleye katılan kullanıcılar içerisinden seçilen bir kullanıcı onaylanabilir ve sonrasında bu kullanıcı görüntülenebilir.
 - Kullanıcı Tarafı İşlevleri
-* İhalelere Katılım: Kullanıcılar, ihalelere katılabilir ve katılmak için bir ücret girer.
+  * İhalelere Katılım: Kullanıcılar, ihalelere katılabilir ve katılmak için bir ücret girer.
 
 ---
 
